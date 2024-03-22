@@ -1,0 +1,44 @@
+####################################################################################################################################################
+===>pv.yaml
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: gold-pv-cka
+  labels:
+    tier: white
+spec:
+  capacity:
+    storage: 50Mi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  storageClassName: gold-stc-cka
+  hostPath:
+    path: /opt/gold-stc-cka
+    type: DirectoryOrCreate
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values: 
+            - node01
+command: kubectl apply -f pv.yaml
+ ===> pvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gold-pvc-cka
+spec:
+  storageClassName: gold-stc-cka
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 30Mi
+  selector:
+    matchLabels:
+      tier: white
+command: kubectl apply -f pvc.yaml
