@@ -1,0 +1,18 @@
+######################################################## Troubleshooting-2 #####################################################################
+Step1: Check the pod status
+       kubectl get pods
+       
+Step2: Describe the pod
+       kubectl describe pod <pod-name>
+
+Step3: Edit the pod and Check the command section, it should be
+       kubectl edit pod <pod-name>
+       command:
+         - sh
+         - -c
+         - <command>
+Step4: list out the pods and pod should be running
+       kubectl get pods
+
+
+       
