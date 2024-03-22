@@ -1,0 +1,23 @@
+####################################################### TroubleShooting-1 ###########################################################
+---
+Step1: Describe the pod and check issue.
+       kubectl describe pod <pod-name>
+
+Step2: Check the configmap
+       kubectl get cm
+
+Step3: Edit the deployment and update the configmap
+       kubectl edit deploy <deploy-name>
+
+Step4: Now again check the pod status, if it's not up describe the pod
+       kubectl get pods
+       kubectl describe pod <pod-name>
+
+Step5: Update the command section
+       command:
+          - sh
+          - -c
+          - echo "<message>"
+
+Step6: Check status of pod, pod should be up.
+       kubectl get pods
