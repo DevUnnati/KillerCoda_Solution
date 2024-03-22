@@ -1,0 +1,17 @@
+#########################################################################################################
+pvc.yaml ==>
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: red-pvc-cka
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 30Mi
+  volumeName: red-pv-cka
+  
+command: kubectl apply -f pvc.yaml
