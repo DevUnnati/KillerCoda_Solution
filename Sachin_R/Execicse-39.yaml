@@ -1,0 +1,10 @@
+##############################################################TroubleShooting-3################################################################################
+Step1: Check the status of pods
+       kubectl get pods
+
+Step2: Describe the pod to check the issue
+      kubectl describe pod <pod-name>
+
+Step3: ImageName change
+      kubectl edit pod <pod-name>
+      (image name should be nginx:latest)
