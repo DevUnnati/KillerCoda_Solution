@@ -1,0 +1,34 @@
+####################################################### TroubleShooting-4 #####################################################################
+
+Step 1: Check the pod status
+        kubectl get pods
+
+Step2: Describe the pods to check the issue
+       kubectl describe pod <pod-name>
+       (issue with PVC)
+
+Step3: Check the correct pvc-name
+       kubectl get pvc
+
+Step4: Edit the pod give correct pvc
+       kubectl edit pod <pod-name> # Give correct pvc-name
+
+Step5: PVC is not bound. Describe the pvc and check issue
+       kubectl describe pod <pod-name> #Storageclass name is worng
+
+Step6: Give Correct Storage Class name and give pv name, so it going to bound.
+       kubectl edit pvc <pvc-name>
+       kubectl get pvc #PVC should be bound to pv
+
+Step7: Check the pod status again
+       kubectl get pods #imagepullbackoff issue
+
+Step8: Edit the pod and Give the correct image
+       kubectl edit pod <pod-name> #image name should be redis:latest
+       
+       
+
+
+
+
+       
