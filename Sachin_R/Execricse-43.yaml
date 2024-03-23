@@ -15,7 +15,7 @@ spec:
       image: redis:latest
       resources:
         requests:
-          memory: "100Mi" #requests should be less than limits
+          memory: "100Mi" #requests should be less than or equals to the limits
           cpu: "10m"
         limits:
           memory: "100Mi"
