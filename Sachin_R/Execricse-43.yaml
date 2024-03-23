@@ -1,0 +1,31 @@
+#######################################################Troubleshooting-pod-issue-5#################################################################
+
+Step1: Apply the YAML file and try to deploy the pod
+       kubectl apply -f <filename> #don't worry error will come
+
+Step2: Redis yaml file should be like this:
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis-pod
+spec:
+  containers:
+    - name: redis-container
+      image: redis:latest
+      resources:
+        requests:
+          memory: "100Mi" #requests should be less than limits
+          cpu: "10m"
+        limits:
+          memory: "100Mi"
+          cpu: "10m"
+
+ Step 3: Apply the files
+         kubectl apply -f <file-name>
+
+ Step4: list out the pods and check the status
+        kubectl get pods
+ 
+                                                                                                                                 
+                                                                                                                                 
